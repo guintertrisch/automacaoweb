@@ -15,7 +15,7 @@ public abstract class BaseTest {
 
     @BeforeMethod
     @Parameters("browser")
-    public void setUpTest(@Optional("firefox") String browser) {
+    public void setUpTest(@Optional("chrome") String browser) {
         driver = browsers.getDriver(browser);
         driver.get("https://shopcart-challenge.4all.com/");
         home = new HomePageLocators(driver);
