@@ -1,13 +1,18 @@
 import locators.CheckoutLocators;
 import locators.HomePageLocators;
 import org.openqa.selenium.By;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
+@Listeners({utils.Listeners.class})
 public class CarrinhoTestCase extends BaseTest {
 
 
     @Test
     public void desafio1() {
+
         home.clicarNaListaDeCategorias();
         home.selecionarCategoria("Doces");
         home.adicionarTodosProdutosNoCarrinho();
@@ -23,6 +28,7 @@ public class CarrinhoTestCase extends BaseTest {
 
     @Test
     public void desafio2() {
+
         home.clicarNaListaDeCategorias();
         home.selecionarCategoria("Bebidas");
         home.adicionarTodosProdutosNoCarrinho();
@@ -36,6 +42,11 @@ public class CarrinhoTestCase extends BaseTest {
         checkout.validaMensagemPedidoRealizadoComSucesso();
         checkout.fecharCheckout();
 
+    }
+
+    @AfterClass
+    public void browserQuit(){
+        driver.quit();
     }
 
 }

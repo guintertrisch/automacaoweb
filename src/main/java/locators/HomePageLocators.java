@@ -18,11 +18,12 @@ public class HomePageLocators {
 
     public HomePageLocators(WebDriver driver) {
         this.driver = driver;
-        this.wait = new WebDriverWait(driver, 20);
+        this.wait = new WebDriverWait(driver, 30);
     }
 
     public void clicarNaListaDeCategorias() {
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("open-categories-btn"))).click();
+
     }
 
     public void selecionarCategoria(String categoria) {

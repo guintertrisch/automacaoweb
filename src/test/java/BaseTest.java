@@ -3,29 +3,30 @@ import locators.HomePageLocators;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeClass;
+import org.testng.annotations.*;
+import utils.Browsers;
 
+@Listeners({utils.Listeners.class})
 public abstract class BaseTest {
-    static WebDriver driver;
-    static HomePageLocators home;
-    static CheckoutLocators checkout;
+    public WebDriver driver;
+    public HomePageLocators home;
+    public CheckoutLocators checkout;
+    Browsers browsers = new Browsers();
 
-    @BeforeClass
-    public  void setUpTest() {
-        System.setProperty("webdriver.chrome.driver", "./src/main/resources/chromedriver.exe");
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("--start-maximized");
-        driver = new ChromeDriver(options);
+    @BeforeMethod
+    @Parameters("browser")
+    public void setUpTest(@Optional("firefox") String browser) {
+        driver = browsers.getDriver(browser);
         driver.get("https://shopcart-challenge.4all.com/");
         home = new HomePageLocators(driver);
         checkout = new CheckoutLocators(driver);
+
     }
 
-    @AfterTest
-    public void finalizarTest(){
+    @AfterMethod
+    public void finalizarTest() {
         driver.close();
-        driver.quit();
-
     }
+
+
 }
