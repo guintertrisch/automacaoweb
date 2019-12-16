@@ -1,8 +1,6 @@
 import locators.CheckoutLocators;
 import locators.HomePageLocators;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.annotations.*;
 import utils.Browsers;
 
@@ -11,11 +9,12 @@ public abstract class BaseTest {
     public WebDriver driver;
     public HomePageLocators home;
     public CheckoutLocators checkout;
-    Browsers browsers = new Browsers();
+
 
     @BeforeMethod
     @Parameters("browser")
     public void setUpTest(@Optional("chrome") String browser) {
+        Browsers browsers = new Browsers();
         driver = browsers.getDriver(browser);
         driver.get("https://shopcart-challenge.4all.com/");
         home = new HomePageLocators(driver);
@@ -24,9 +23,8 @@ public abstract class BaseTest {
     }
 
     @AfterMethod
-    public void finalizarTest() {
+    public void browserClose() {
         driver.close();
     }
-
 
 }

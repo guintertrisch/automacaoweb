@@ -1,11 +1,9 @@
 package utils;
 
 import org.testng.*;
-import org.testng.annotations.Test;
 
-import java.lang.annotation.Annotation;
 
-public class Listeners  implements ITestListener {
+public class Listeners implements ITestListener {
 
     @Override
     public void onTestStart(ITestResult result) {
@@ -31,10 +29,10 @@ public class Listeners  implements ITestListener {
     }
 
     @Override
-    public void onTestFailedButWithinSuccessPercentage(ITestResult result) {
-        // TODO Auto-generated method stub
+    public void onTestFailedButWithinSuccessPercentage(ITestResult iTestResult) {
 
     }
+
 
     @Override
     public void onStart(ITestContext context) {

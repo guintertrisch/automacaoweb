@@ -5,7 +5,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
-import org.openqa.selenium.ie.InternetExplorerDriver;
+
 
 public class Browsers {
     private WebDriver driver = null;
@@ -22,7 +22,7 @@ public class Browsers {
                 System.setProperty("webdriver.gecko.driver", "./src/main/resources/geckodriver.exe");
                 FirefoxOptions optionsFirefox = new FirefoxOptions();
                 optionsFirefox.addArguments("--start-maximized");
-                driver = new FirefoxDriver(optionsFirefox);
+                driver = new FirefoxDriver();
                 break;
 
         }

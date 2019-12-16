@@ -1,14 +1,9 @@
-import locators.CheckoutLocators;
-import locators.HomePageLocators;
-import org.openqa.selenium.By;
 import org.testng.annotations.AfterClass;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 @Listeners({utils.Listeners.class})
 public class CarrinhoTestCase extends BaseTest {
-
 
     @Test
     public void desafio1() {
@@ -38,6 +33,7 @@ public class CarrinhoTestCase extends BaseTest {
         home.clicarNoCarrinho();
         checkout.aumentarQuantidadeDeProdutoNoCarrinho("Rissole médio", 9);
         checkout.diminuirQuantidadeDeProdutoNoCarrinho("Rissole médio", 5);
+        checkout.validaValorTotal();
         checkout.finalizarCompra();
         checkout.validaMensagemPedidoRealizadoComSucesso();
         checkout.fecharCheckout();
@@ -45,8 +41,7 @@ public class CarrinhoTestCase extends BaseTest {
     }
 
     @AfterClass
-    public void browserQuit(){
+    public void browserQuit() {
         driver.quit();
     }
-
 }
