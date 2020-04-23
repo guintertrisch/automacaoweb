@@ -1,5 +1,6 @@
 package utils;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -13,16 +14,16 @@ public class Browsers {
     public WebDriver getDriver(String browser) {
         switch (browser) {
             case "chrome":
-                System.setProperty("webdriver.chrome.driver", "./src/main/resources/chromedriver.exe");
                 ChromeOptions options = new ChromeOptions();
                 options.addArguments("--start-maximized");
+                WebDriverManager.chromedriver().setup();
                 driver = new ChromeDriver(options);
                 break;
             case "firefox":
-                System.setProperty("webdriver.gecko.driver", "./src/main/resources/geckodriver.exe");
                 FirefoxOptions optionsFirefox = new FirefoxOptions();
                 optionsFirefox.addArguments("--start-maximized");
-                driver = new FirefoxDriver();
+                WebDriverManager.firefoxdriver().setup();
+                driver = new FirefoxDriver(optionsFirefox);
                 break;
 
         }
